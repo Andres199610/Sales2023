@@ -3,7 +3,7 @@
 <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"/>
 
 
-<EditForm EditContext="editContext" OnValidSubmit="OnValiSubmit">
+<EditForm EditContext="editContext" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="mb-3">
         <label>Pais:</label>
@@ -27,7 +27,7 @@
 
     [Parameter]
     [EditorRequired]
-    public EventCallback OnValiSubmit { get; set; } 
+    public EventCallback OnValidSubmit { get; set; } 
 
     [Parameter]
     [EditorRequired]
@@ -52,7 +52,7 @@
             {
                 Title = "Confirmacion",
                 Text = "¿dDeseas abandonar la pagina y perder los cambios? ",
-                Icon = SweetAlertIcon.Warning,
+                Icon = SweetAlertIcon.Question,
                 ShowCancelButton = true,
                 CancelButtonText = "No",
                 ConfirmButtonText = "Si"
