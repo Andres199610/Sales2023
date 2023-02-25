@@ -1,0 +1,53 @@
+﻿@typeparam Titem
+
+@if (Mylist is null)
+{
+    @if (Loading is null)
+    {
+        <div class="align-items-center">
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif">
+        </div>
+    }
+    else
+    {
+        @Loading
+    }
+
+}
+else if (Mylist.Count == 0)
+{
+    @if (NoRecords is null)
+    {
+        <div class="align-items-center">
+            <p>No hay resgistros para mostrar.</p>
+
+        </div>
+    }
+    else
+    {
+        @NoRecords
+    }
+}
+else
+{
+    @Body
+}
+
+
+@code {
+    [Parameter]
+
+    public RenderFragment? Loading { get; set; }
+
+    [Parameter]
+    public RenderFragment? NoRecords { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public RenderFragment Body { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public List<Titem> Mylist { get; set; } = null!;
+}
