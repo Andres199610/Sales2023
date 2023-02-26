@@ -32,6 +32,7 @@
                             @country.StatesNumber
                         </td>
                         <td>
+                            <a class="btn btn-info" href="/countries/details/@country.Id">Detalles</a>
                             <a class="btn btn-warning" href="/countries/edit/@country.Id">Editar</a>
                             <button class="btn btn-danger" @onclick=@(()=> DeleteAsync(country.Id))>Borrar</button>
                         </td>
@@ -79,7 +80,7 @@
         var responseHttp = await repository.Delete($"/api/countries/{id}");
         if (responseHttp.Error)
         {
-            if(responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
+            if (responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
             {
                 var message = await responseHttp.GetErrorMessageAsync();
                 await sweetAlertService.FireAsync("Error", message, SweetAlertIcon.Error);
