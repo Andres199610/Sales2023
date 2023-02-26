@@ -83,6 +83,10 @@ namespace Sales.API.Data
             }
                 });
 
+                _context.Categories.Add(new Category { Name = "Arquitectura" });
+                _context.Categories.Add(new Category { Name = "Deporte" });
+                _context.Categories.Add(new Category { Name = "Educación" });
+
             }
 
             await _context.SaveChangesAsync();
