@@ -2,35 +2,35 @@
 @inject IRepository repository
 
 <h3>Categoría</h3>
-@if(Categories is null)
-{
-    <p>Cargando....</p>
-}else
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Categoría</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var category in Categories)
-            {
-                <tr>
-                    <td>
-                        <a class="btn btn-warning">Editar</a>
-                        <button class="btn btn-danger">Borrar</button>
-                    </td>
-                    <td>
-                        @category.Name
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-}
+<GnericList Mylist="Categories">
+
+    <Body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Categories!)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-warning">Editar</a>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
+                        <td>
+                            @category.Name
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </Body>
+</GnericList>
 
 @code {
     public List<Category>? Categories { get; set; }
