@@ -83,9 +83,9 @@ namespace Sales.API.Data
             }
                 });
 
-                _context.Categories.Add(new Category { Name = "Arquitectura" });
-                _context.Categories.Add(new Category { Name = "Deporte" });
-                _context.Categories.Add(new Category { Name = "Educación" });
+                _context.Categories.Add(new Category { Name = "Bebidas" });
+                _context.Categories.Add(new Category { Name = "Carnes" });
+                _context.Categories.Add(new Category { Name = "Bocadillos" });
 
             }
 
