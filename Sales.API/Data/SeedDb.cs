@@ -85,6 +85,14 @@ namespace Sales.API.Data
 
                 _context.Categories.Add(new Category { Name = "Bebidas" });
                 _context.Categories.Add(new Category { Name = "Carnes" });
+                _context.Categories.Add(new Category { Name = "Vino" });
+                _context.Categories.Add(new Category { Name = "Mecato" });
+                _context.Categories.Add(new Category { Name = "Galletas" });
+                _context.Categories.Add(new Category { Name = "Cafe" });
+                _context.Categories.Add(new Category { Name = "Chocolates" });
+                _context.Categories.Add(new Category { Name = "Carnes frescas" });
+                _context.Categories.Add(new Category { Name = "Cafe molido" });
+                _context.Categories.Add(new Category { Name = "Gaseosa" });
                 _context.Categories.Add(new Category { Name = "Bocadillos" });
 
             }
