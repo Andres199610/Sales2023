@@ -22,6 +22,8 @@ namespace Sales.API.Data
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<ProdCategory> ProdCategories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,6 +31,7 @@ namespace Sales.API.Data
             modelBuilder.Entity<State>().HasIndex("CountryId","Name").IsUnique();
             modelBuilder.Entity<City>().HasIndex("StateId", "Name").IsUnique();
             modelBuilder.Entity<Category>().HasIndex(x => x.Name).IsUnique();
+            modelBuilder.Entity<ProdCategory>().HasIndex(x => x.Name).IsUnique();
         }
     }
 
