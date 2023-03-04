@@ -1,4 +1,5 @@
-﻿using Sales.Shared.Entities;
+﻿using Sales.API.Services;
+using Sales.Shared.Entities;
 
 namespace Sales.API.Data
 {
@@ -6,10 +7,13 @@ namespace Sales.API.Data
     {
 
         private readonly DataContext _context;
-        public SeedDb(DataContext context) 
+        private readonly IApiService _apiService;
+
+        public SeedDb(DataContext context, IApiService apiService) 
         
         { 
           _context = context;
+            _apiService = apiService;
         }
 
 
@@ -18,6 +22,28 @@ namespace Sales.API.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckCountriesAsync();
+            await CheckCategoriesAsync();
+        }
+
+        private async Task CheckCategoriesAsync()
+        {
+            if (!_context.Categories.Any() )
+                {
+
+                _context.Categories.Add(new Category { Name = "Bebidas" });
+                _context.Categories.Add(new Category { Name = "Carnes" });
+                _context.Categories.Add(new Category { Name = "Vino" });
+                _context.Categories.Add(new Category { Name = "Mecato" });
+                _context.Categories.Add(new Category { Name = "Galletas" });
+                _context.Categories.Add(new Category { Name = "Cafe" });
+                _context.Categories.Add(new Category { Name = "Chocolates" });
+                _context.Categories.Add(new Category { Name = "Carnes frescas" });
+                _context.Categories.Add(new Category { Name = "Cafe molido" });
+                _context.Categories.Add(new Category { Name = "Gaseosa" });
+                _context.Categories.Add(new Category { Name = "Bocadillos" });
+                await _context.SaveChangesAsync();
+
+            }
         }
 
         private async Task CheckCountriesAsync()
@@ -83,17 +109,7 @@ namespace Sales.API.Data
             }
                 });
 
-                _context.Categories.Add(new Category { Name = "Bebidas" });
-                _context.Categories.Add(new Category { Name = "Carnes" });
-                _context.Categories.Add(new Category { Name = "Vino" });
-                _context.Categories.Add(new Category { Name = "Mecato" });
-                _context.Categories.Add(new Category { Name = "Galletas" });
-                _context.Categories.Add(new Category { Name = "Cafe" });
-                _context.Categories.Add(new Category { Name = "Chocolates" });
-                _context.Categories.Add(new Category { Name = "Carnes frescas" });
-                _context.Categories.Add(new Category { Name = "Cafe molido" });
-                _context.Categories.Add(new Category { Name = "Gaseosa" });
-                _context.Categories.Add(new Category { Name = "Bocadillos" });
+               
 
             }
 
