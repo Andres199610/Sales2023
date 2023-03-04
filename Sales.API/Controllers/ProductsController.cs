@@ -6,11 +6,11 @@ using Sales.Shared.Entities;
 namespace Sales.API.Controllers
 {
     [ApiController]
-    [Route("/api/prodcategories")]
-    public class ProdCategoriesController : ControllerBase
+    [Route("/api/products")]
+    public class Products : ControllerBase
     {
         private readonly DataContext _context;
-        public ProdCategoriesController(DataContext context)
+        public Products(DataContext context)
         {
             _context = context;
 
@@ -19,7 +19,7 @@ namespace Sales.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            return Ok(await _context.ProdCategories.ToListAsync());
+            return Ok(await _context.Products.ToListAsync());
 
         }
 
@@ -28,24 +28,24 @@ namespace Sales.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetAsync(int id)
         {
-            var prodcategory = await _context.ProdCategories.FirstOrDefaultAsync(x => x.Id == id);
-            if (prodcategory == null)
+            var product = await _context.ProdCategories.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
             {
                 return NotFound();
 
             }
-            return Ok(prodcategory);
+            return Ok(product);
 
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync(ProdCategory prodcategory)
+        public async Task<ActionResult> PostAsync(Product product)
         {
             try
             {
-                _context.Add(prodcategory);
+                _context.Add(product);
                 await _context.SaveChangesAsync();
-                return Ok(prodcategory);
+                return Ok(product);
             }
             catch (DbUpdateException dbUpdateException)
             {
@@ -61,19 +61,19 @@ namespace Sales.API.Controllers
             }
         }
         [HttpPut]
-        public async Task<ActionResult> PustAsync(ProdCategory prodcategory)
+        public async Task<ActionResult> PustAsync(Product product)
         {
             try
             {
-                _context.Update(prodcategory);
+                _context.Update(product);
                 await _context.SaveChangesAsync();
-                return Ok(prodcategory);
+                return Ok(product);
             }
             catch (DbUpdateException dbUpdateException)
             {
                 if (dbUpdateException.InnerException!.Message.Contains("duplicate"))
                 {
-                    return BadRequest("Ya existe el producto categorá con el mismo nombre.");
+                    return BadRequest("Ya existe el producto  con el mismo nombre.");
                 }
                 return BadRequest(dbUpdateException.Message);
             }
@@ -85,13 +85,13 @@ namespace Sales.API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var prodcategory = await _context.ProdCategories.FirstOrDefaultAsync(x => x.Id == id);
-            if (prodcategory == null)
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if (product == null)
             {
                 return NotFound();
 
             }
-            _context.Remove(prodcategory);
+            _context.Remove(product);
             await _context.SaveChangesAsync();
             return NoContent();
 

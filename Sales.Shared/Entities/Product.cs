@@ -8,22 +8,16 @@ using System.Xml.Linq;
 
 namespace Sales.Shared.Entities
 {
-   public class ProdCategory
+    public class Product
     {
         public int Id { get; set; }
 
 
-        [Display(Name = "Producto Categoria")]
+        [Display(Name = "Producto")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [MaxLength(255, ErrorMessage = "El campo {0} no puede tener mas {1} caractéres")]
         public String Name { get; set; } = null!;
-
-        public int CategoryId { get; set; }
-        public Category? Category { get; set; }
-
-        public ICollection<Product>? Products { get; set; }
-
-
-        public int ProductsNumber =>Products == null ? 0 : Products.Count;
+        public int ProdCategoryId { get; set; }
+        public ProdCategory? ProdCategory { get; set; }
     }
 }
