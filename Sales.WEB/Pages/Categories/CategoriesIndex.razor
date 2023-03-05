@@ -6,9 +6,7 @@
 
 <a class="btn btn-primary mb-3" href="/categories/create"> Nueva Categoría</a>
 
-<Pagination CurrentPage="1"
-            TotalPages="10"
-            SelectedPage="1" />
+
 
 
 <GnericList Mylist="Categories">
@@ -54,10 +52,7 @@
         var responseHttp = await repository.Get<List<Category>>("/api/categories");
         Categories = responseHttp.Response;
     }
-    private async Task SelectedPageAsync(int page)
-    {
-        
-    }
+   
 
     private async Task DeleteAsync(int id)
     {

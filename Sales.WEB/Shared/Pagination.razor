@@ -1,5 +1,4 @@
-﻿<h3>Pagination</h3>
-<nav>
+﻿<nav>
     <ul class="pagination">
 
         @foreach (var link in Links)
@@ -11,12 +10,14 @@
     </ul>
 </nav>
 
+
 @code {
     [Parameter] public int CurrentPage { get; set; } = 1;
     [Parameter] public int TotalPages { get; set; }
     [Parameter] public int Radio { get; set; } = 5;
     [Parameter] public EventCallback<int> SelectedPage { get; set; }
     List<PageModel> Links = new();
+
     protected override void OnParametersSet()
     {
         Links = new List<PageModel>();
@@ -53,6 +54,7 @@
             });
 
     }
+
     private async Task InternalSelectedPage(PageModel pageModel)
     {
         if (pageModel.Page == CurrentPage || pageModel.Page == 0)
@@ -63,7 +65,6 @@
         await SelectedPage.InvokeAsync(pageModel.Page);
     }
 
-
     class PageModel
     {
         public string Text { get; set; } = null!;
@@ -71,5 +72,5 @@
         public bool Enable { get; set; } = true;
         public bool Active { get; set; } = false;
     }
-
 }
+
