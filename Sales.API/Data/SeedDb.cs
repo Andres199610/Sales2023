@@ -23,10 +23,42 @@ namespace Sales.API.Data
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-          //  await CheckCountriesAsync();
-            //await CheckCategoriesAsync();
+         //await CheckCountriesAsync();
+            await ChecCategoriesAsync();
         }
+        private async Task ChecCategoriesAsync()
+        {
+            if (!_context.Categories.Any())
+            {
+                _context.Categories.Add(new Category { Name = "Carne" });
+                _context.Categories.Add(new Category { Name = "Pescado" });
+                _context.Categories.Add(new Category { Name = "Salmon" });
+                _context.Categories.Add(new Category { Name = "Cafe" });
+                _context.Categories.Add(new Category { Name = "Chocolate" });
+                _context.Categories.Add(new Category { Name = "Jugo" });
+                _context.Categories.Add(new Category { Name = "Maiz" });
+                _context.Categories.Add(new Category { Name = "Lentejas" });
+                _context.Categories.Add(new Category { Name = "Frijol" });
+                _context.Categories.Add(new Category { Name = "Galleta" });
+                _context.Categories.Add(new Category { Name = "Avena" });
+                _context.Categories.Add(new Category { Name = "Legumbre" });
+                _context.Categories.Add(new Category { Name = "Cafe tostado" });
+                _context.Categories.Add(new Category { Name = "Carnes frescas" });
+                _context.Categories.Add(new Category { Name = "Carne refrigerada" });
+                _context.Categories.Add(new Category { Name = "Nucita" });
+                _context.Categories.Add(new Category { Name = "Helado" });
+                _context.Categories.Add(new Category { Name = "Helado Bon" });
+                _context.Categories.Add(new Category { Name = "Pastas" });
+                _context.Categories.Add(new Category { Name = "Platano" });
+                _context.Categories.Add(new Category { Name = "Bocadillo" });
+                await _context.SaveChangesAsync();
 
+            }
+                
+                
+
+
+        }
         private async Task CheckCountriesAsync()
         {
             if (!_context.Countries.Any())
