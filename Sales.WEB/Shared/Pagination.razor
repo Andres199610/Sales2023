@@ -22,18 +22,19 @@
     {
         Links = new List<PageModel>();
 
-        var previousLinkEnable = CurrentPage != 1;
+        var previousLinkEnable = CurrentPage > 1;
         var previousLinkPage = CurrentPage - 1;
+
         Links.Add(new PageModel
             {
                 Text = "Anterior",
                 Page = previousLinkPage,
                 Enable = previousLinkEnable
             });
-
+       
         for (int i = 1; i <= TotalPages; i++)
         {
-            if (i >= CurrentPage - Radio && i <= CurrentPage + Radio)
+            if (i >= CurrentPage - Radio && i < CurrentPage + Radio)
             {
                 Links.Add(new PageModel
                     {
@@ -44,7 +45,7 @@
             }
         }
 
-        var linkNextEnable = CurrentPage != TotalPages;
+        var linkNextEnable = CurrentPage < TotalPages;
         var linkNextPage = CurrentPage + 1;
         Links.Add(new PageModel
             {
@@ -72,5 +73,6 @@
         public bool Enable { get; set; } = true;
         public bool Active { get; set; } = false;
     }
+    
 }
 
