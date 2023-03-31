@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Sales.Shared.Entities;
 
 namespace Sales.API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
 
         public DataContext(DbContextOptions<DataContext>options): base(options)
@@ -23,7 +24,7 @@ namespace Sales.API.Data
         public DbSet<Category> Categories { get; set; }
 
 
-        public DbSet<ProdCategory> ProdCategories { get; set; }
+       
 
         public DbSet<Product> Products { get; set; }
 
