@@ -18,6 +18,8 @@ else
     private Category? category;
     private CategoryForm? categoryForm;
 
+    [CascadingParameter]
+    BlazoredModalInstance BlazoredModal { get; set; } = default!;
 
 
 
@@ -53,6 +55,8 @@ else
             return;
 
         }
+        await BlazoredModal.CloseAsync(ModalResult.Ok());
+
         Return();
 
     }
