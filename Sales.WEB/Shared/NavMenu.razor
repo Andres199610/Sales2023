@@ -20,15 +20,20 @@
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/countries">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Paises
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
             <NavLink class="nav-link" href="/categories">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Categoría
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Categoria
             </NavLink>
         </div>
+        <AuthorizeView Roles="Admin">
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="countries">
+                        <span class="oi oi-globe" aria-hidden="true"></span> Países
+                    </NavLink>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+
     </nav>
 </div>
 
