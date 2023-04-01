@@ -15,8 +15,8 @@ namespace Sales.WEB.Repositories
         Task<HttpResponseWrapper<object>> Put<T>(string url, T model);
 
         Task<HttpResponseWrapper<TResponse>> Put<T, TResponse>(string url, T model);
-       
 
+        
 
     }
 
